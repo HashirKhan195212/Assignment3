@@ -1,0 +1,74 @@
+<!--Hashir Khan 100911091
+Afeef Hossain 100923314
+Kapiraj Sivakumar 100817815-->
+<!--Call header-->
+<%- include ../Partials/header.ejs%>
+<!--Call Navbar-->
+<%- include ../Partials/main_nav.ejs%>
+<!-- Main content container for the page -->
+<main class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-10">
+            <!-- Page title display -->
+            <h1><%= title %></h1>
+            <br>
+            <% if(typeof displayName == 'string' && displayName) { %>
+            <!--Button to add a new grade entry-->
+            <a href="/index/add" class="btn btn-primary" role="button">
+                <i class="fas fa-plus-circle"></i> Add An Exam
+            </a>
+            <% } %>
+             <!-- Table to display calculator data -->
+            <table class="table table-bordered table-striped table-hover">
+                 <!-- Table header row with column names -->
+                <tr class="d-flex">
+                    <% if(typeof displayName == 'string' && displayName) { %>
+                        <th class="text-center col-2">Course</th>
+                        <th class="text-center col-2">Course Code</th>
+                        <th class="text-center col-2">Professor</th>
+                        <th class="text-center col-1">Day</th>
+                        <th class="text-center col-1">Weight</th>
+                        <th class="text-center col-1"></th>
+                        <th class="text-center col-1"></th>
+                    <% } else{ %>
+                        <th class="text-center col-2">Course</th>
+                        <th class="text-center col-2">Course Code</th>
+                        <th class="text-center col-2">Professor</th>
+                        <th class="text-center col-1">Marks Gained</th>
+                        <th class="text-center col-1">Total Marks</th>
+                        <th class="text-center col-2">Percentage</th>
+                    <% } %>
+                </tr>
+                <!--Loop through each item in calculatorList to fill rows-->
+                <% for(let count=0;count<scheduleList.length;count++) { %>
+                <tr class="d-flex">
+                    <td class="text-center col-2"><%= scheduleList[count].Course %></td>
+                    <td class="text-center col-2"><%= scheduleList[count].CourseCode %></td>
+                    <td class="text-center col-2"><%= scheduleList[count].Professor %></td>
+                    <td class="text-center col-1"><%= scheduleList[count].Day %> </td>
+                    <td class="text-center col-1"><%= scheduleList[count].Weight %> </td>
+                    <% if(typeof displayName == 'string' && displayName) { %>
+                    <!--edit button-->
+                    <td class="text-center col-1">
+                        <a href="/index/edit/<%= scheduleList[count]._id%>"
+                            class="btn btn-primary btn-sm">
+                        <i class="fas fa-pencil-alt"></i>Edit Exam
+                    </a>
+                    </td>
+                    <!--delete button-->
+                    <td class="text-center col-1">
+                        <form action="/index/delete/<%= scheduleList[count]._id %>" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i> Delete Exam
+                            </button>
+                        </form>
+                    </td>
+                    <% } %>
+                </tr>    
+                    <%} %>
+            </table>
+        </div>
+    </div>
+</main>
+<!--call footer-->
+<%- include ../Partials/footer.ejs%>

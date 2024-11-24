@@ -1,6 +1,6 @@
 let mongoose = require('mongoose')
 //create a model class
-let calculatorModel = mongoose.Schema({
+let scheduleModel = mongoose.Schema({
     Course:String,
     CourseCode:String,
     Professor:String,
@@ -12,4 +12,4 @@ let calculatorModel = mongoose.Schema({
     collection: "Exam"
 }
 )
-module.exports = mongoose.model('Schedule', calculatorModel)
+module.exports = mongoose.model('Schedule', scheduleModel)
