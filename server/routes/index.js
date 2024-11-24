@@ -7,7 +7,7 @@ let User = userModel.User;
 /* GET index page. */
 router.get('Schedule/index', function(req, res, next) {
     res.render('index', { 
-    title: 'Schedule', 
+    title: 'Exam Schedule', 
     displayName:req.user ? req.user.displayName:'' });
 });
 router.get('/login', function(req,res,next){
