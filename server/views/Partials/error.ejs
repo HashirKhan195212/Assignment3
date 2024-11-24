@@ -1,0 +1,10 @@
+<!--Call header-->
+<%- include Partials/header.ejs %>
+<!--Call navbar-->
+<%- include Partials/main_nav.ejs %>
+<!--Error message-->
+<h1><%= message %></h1>
+<h2><%= error.status %></h2>
+<pre><%= error.stack %></pre>
+<!--Call footer-->
+<%- include Partials/footer.ejs %>
