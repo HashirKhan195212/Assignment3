@@ -1,6 +1,3 @@
-<!--Hashir Khan 100911091
-Afeef Hossain 100923314
-Kapiraj Sivakumar 100817815-->
 <!--Call header-->
 <%- include ../Partials/header.ejs%>
 <!--Call Navbar-->
@@ -13,12 +10,12 @@ Kapiraj Sivakumar 100817815-->
             <h1><%= title %></h1>
             <br>
             <% if(typeof displayName == 'string' && displayName) { %>
-            <!--Button to add a new grade entry-->
+            <!--Button to add a new exam entry-->
             <a href="/index/add" class="btn btn-primary" role="button">
                 <i class="fas fa-plus-circle"></i> Add An Exam
             </a>
             <% } %>
-             <!-- Table to display calculator data -->
+             <!-- Table to display exam data -->
             <table class="table table-bordered table-striped table-hover">
                  <!-- Table header row with column names -->
                 <tr class="d-flex">
@@ -27,19 +24,18 @@ Kapiraj Sivakumar 100817815-->
                         <th class="text-center col-2">Course Code</th>
                         <th class="text-center col-2">Professor</th>
                         <th class="text-center col-1">Day</th>
-                        <th class="text-center col-1">Weight</th>
+                        <th class="text-center col-2">Weight</th>
                         <th class="text-center col-1"></th>
                         <th class="text-center col-1"></th>
                     <% } else{ %>
                         <th class="text-center col-2">Course</th>
                         <th class="text-center col-2">Course Code</th>
                         <th class="text-center col-2">Professor</th>
-                        <th class="text-center col-1">Marks Gained</th>
-                        <th class="text-center col-1">Total Marks</th>
-                        <th class="text-center col-2">Percentage</th>
+                        <th class="text-center col-2">Day</th>
+                        <th class="text-center col-1">Weight</th>
                     <% } %>
                 </tr>
-                <!--Loop through each item in calculatorList to fill rows-->
+                <!--Loop through each item in scheduleList to fill rows-->
                 <% for(let count=0;count<scheduleList.length;count++) { %>
                 <tr class="d-flex">
                     <td class="text-center col-2"><%= scheduleList[count].Course %></td>
