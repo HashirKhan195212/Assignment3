@@ -24,3 +24,22 @@ let passportLocal = require('passport-local')
 let flash = require('connect-flash')
 passport.use(User.createStrategy());
 let localStrategy = passportLocal.Strategy;
+let mongoose = require('mongoose');
+let DB = require('./db')
+mongoose.connect(DB.URI);
+// Set up MongoDB connection using Mongoose
+let mongoDB = mongoose.connection;
+mongoDB.on('error',console.error.bind(console,'Connection Error'))
+mongoDB.once('open',()=>{
+  console.log('MongoDB connected')
+})
+app.use(session({
+  secret:"SomeSecret",
+  saveUninitialized:false,
+  resave:false
+}))
+app.use(flash())
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+app.use(passport.initialize());
+app.use(passport.session());
