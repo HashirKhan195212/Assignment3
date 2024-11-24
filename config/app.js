@@ -11,3 +11,6 @@ let logger = require('morgan');
 // Making routes
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
+// Express application
+let app = express();
+let cors = require('cors')
