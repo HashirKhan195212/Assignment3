@@ -13,7 +13,7 @@ router.get('Exam/index', function(req, res, next) {
 });
 router.get('/login', function(req,res,next){
     if(!req.user){
-      res.render('auth/login',{
+      res.render('Auth/login',{
         title:'Login',
         message:req.flash('loginmessage'),
         displayName:req.user ? req.user.displayName:'' 
