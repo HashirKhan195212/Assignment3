@@ -1,3 +1,4 @@
+// Hashir Khan 100911091
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose')
 let User = mongoose.Schema({
