@@ -56,7 +56,7 @@ router.post('/add', async (req, res, next) => {
             Weight: req.body.Weight
         });
         await newSchedule.save();
-        res.redirect('/'); // Redirect to the homepage
+        res.redirect('/index'); // Redirect to the homepage
     } catch (err) {
         console.error(err);
         res.render('Exam/index', {
@@ -100,10 +100,10 @@ router.post('/edit/:id', async (req, res, next) => {
             Weight: req.body.Weight
         };
         await Schedule.findByIdAndUpdate(id, updatedSchedule);
-        res.redirect('/'); // Redirect to the homepage
+        res.redirect('/index'); // Redirect to the homepage
     } catch (err) {
         console.error(err);
-        res.render('Exam/index', {
+        res.render('/index', {
             error: 'Error on server',
             title: 'Exam Schedule' // Add title for error page
         });
@@ -115,7 +115,7 @@ router.post('/delete/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
         await Schedule.deleteOne({ _id: id });
-        res.redirect('/'); // Redirect to the homepage
+        res.redirect('/index'); // Redirect to the homepage
     } catch (err) {
         console.error(err);
         res.render('Exam/index', {

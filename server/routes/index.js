@@ -5,7 +5,7 @@ let DB = require('../config/db')
 let userModel = require('../model/User')
 let User = userModel.User;
 /* GET index page. */
-router.get('Schedule/index', function(req, res, next) {
+router.get('Exam/index', function(req, res, next) {
     res.render('index', { 
     title: 'Exam Schedule', 
     displayName:req.user ? req.user.displayName:'' });
@@ -19,7 +19,7 @@ router.get('/login', function(req,res,next){
       })
     }
     else{
-      return res.redirect('/')
+      return res.redirect('Exam/index')
     }
   })
   router.post('/login', function(req,res,next){
@@ -84,7 +84,7 @@ router.get('/login', function(req,res,next){
         return next(err)
       }
     })
-    res.redirect('/')
+    res.redirect('/index')
   })
   // exports router
   module.exports = router;  
