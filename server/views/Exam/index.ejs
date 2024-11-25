@@ -1,70 +1,71 @@
-<!--Call header-->
+<!-- Call header -->
 <%- include ../Partials/header.ejs%>
-<!--Call Navbar-->
+<!-- Call Navbar -->
 <%- include ../Partials/main_nav.ejs%>
 <!-- Main content container for the page -->
-<main class="container">
+<main class="container bg-white p-4 rounded shadow">
     <div class="row">
-        <div class="offset-md-1 col-md-10">
+        <div class="col-12">
             <!-- Page title display -->
-            <h1><%= title %></h1>
-            <br>
-            <% if(typeof displayName == 'string' && displayName) { %>
-            <!--Button to add a new exam entry-->
-            <a href="/index/add" class="btn btn-primary" role="button">
-                <i class="fas fa-plus-circle"></i> Add An Exam
-            </a>
-            <% } %>
-             <!-- Table to display exam data -->
-            <table class="table table-bordered table-striped table-hover">
-                 <!-- Table header row with column names -->
-                <tr class="d-flex">
-                    <% if(typeof displayName == 'string' && displayName) { %>
-                        <th class="text-center col-2">Course</th>
-                        <th class="text-center col-2">Course Code</th>
-                        <th class="text-center col-2">Professor</th>
-                        <th class="text-center col-2">Day</th>
-                        <th class="text-center col-1">Weight</th>
-                        <th class="text-center col-1"></th>
-                        <th class="text-center col-1"></th>
-                    <% } else{ %>
-                        <th class="text-center col-2">Course</th>
-                        <th class="text-center col-2">Course Code</th>
-                        <th class="text-center col-2">Professor</th>
-                        <th class="text-center col-2">Day</th>
-                        <th class="text-center col-1">Weight</th>
-                    <% } %>
-                </tr>
-                <!--Loop through each item in scheduleList to fill rows-->
-                <% for(let count=0;count<scheduleList.length;count++) { %>
-                <tr class="d-flex">
-                    <td class="text-center col-2"><%= scheduleList[count].Course %></td>
-                    <td class="text-center col-2"><%= scheduleList[count].CourseCode %></td>
-                    <td class="text-center col-2"><%= scheduleList[count].Professor %></td>
-                    <td class="text-center col-2"><%= scheduleList[count].Day %> </td>
-                    <td class="text-center col-1"><%= scheduleList[count].Weight %> </td>
-                    <% if(typeof displayName == 'string' && displayName) { %>
-                    <!--edit button-->
-                    <td class="text-center col-1">
-                        <a href="index/edit/<%= scheduleList[count]._id%>"
-                            class="btn btn-primary btn-sm">
-                        <i class="fas fa-pencil-alt"></i>Edit Exam
+            <h1 class="text-center"><%= title %></h1>
+            <hr class="mb-4">
+            <% if (typeof displayName === 'string' && displayName) { %>
+                <!-- Button to add a new exam entry -->
+                <div class="text-end mb-3">
+                    <a href="/index/add" class="btn btn-danger">
+                        <i class="fas fa-plus-circle"></i> Add An Exam
                     </a>
-                    </td>
-                    <!--delete button-->
-                    <td class="text-center col-1">
-                        <form action="index/delete/<%= scheduleList[count]._id %>" method="POST" style="display:inline;">
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash-alt"></i> Delete Exam
-                            </button>
-                        </form>
-                    </td>
-                    <% } %>
-                </tr>    
-                    <%} %>
-            </table>
+                </div>
+            <% } %>
+            <!-- Table to display exam data -->
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover text-center">
+                    <!-- Table header row with column names -->
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Course</th>
+                            <th>Course Code</th>
+                            <th>Professor</th>
+                            <th>Day</th>
+                            <th>Weight</th>
+                            <% if (typeof displayName === 'string' && displayName) { %>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            <% } %>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through each item in scheduleList to fill rows -->
+                        <% for (let count = 0; count < scheduleList.length; count++) { %>
+                            <tr>
+                                <td><%= scheduleList[count].Course %></td>
+                                <td><%= scheduleList[count].CourseCode %></td>
+                                <td><%= scheduleList[count].Professor %></td>
+                                <td><%= scheduleList[count].Day %></td>
+                                <td><%= scheduleList[count].Weight %></td>
+                                <% if (typeof displayName === 'string' && displayName) { %>
+                                    <!-- Edit button -->
+                                    <td>
+                                        <a href="index/edit/<%= scheduleList[count]._id %>" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-pencil-alt"></i> Edit
+                                        </a>
+                                    </td>
+                                    <!-- Delete button -->
+                                    <td>
+                                        <form action="index/delete/<%= scheduleList[count]._id %>" method="POST" style="display:inline;">
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                <% } %>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </main>
-<!--call footer-->
+<!-- Call footer -->
 <%- include ../Partials/footer.ejs%>
