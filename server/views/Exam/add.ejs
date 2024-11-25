@@ -1,47 +1,83 @@
-<!--Call header-->
+<!-- Call header -->
 <%- include ../Partials/header.ejs %>
-<!--Call Nav Bar-->
+<!-- Call Nav Bar -->
 <%- include ../Partials/main_nav.ejs %>
-<!--container class-->
+<!-- Main container class -->
 <div class="container">
     <!-- Row to center the form horizontally -->
     <div class="row">
         <div class="offset-md-3 col-md-6">
-            <!-- Form for submitting course information -->
+            <!-- Form for adding new course information -->
+            <h1 class="text-center mb-4">Add New Exam</h1>
             <form class="form" method="POST">
                 <!-- Form group for the Course field -->
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="courseTextField">Course</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Course" name="Course" required>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="courseTextField" 
+                        placeholder="Enter the Course" 
+                        name="Course" 
+                        required>
                 </div>
                 <!-- Form group for the Course Code field -->
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="coursecodeTextField">Course Code</label>
-                    <input type="text" class="form-control" id="coursecodeTextField" placeholder="Enter the Course Code" name="CourseCode" required>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="coursecodeTextField" 
+                        placeholder="Enter the Course Code" 
+                        name="CourseCode" 
+                        required>
                 </div>
                 <!-- Form group for the Professor field -->
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="professorTextField">Professor</label>
-                    <input type="text" class="form-control" id="professorTextField" placeholder="Enter the Professor's name" name="Professor" required>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="professorTextField" 
+                        placeholder="Enter the Professor's name" 
+                        name="Professor" 
+                        required>
                 </div>
                 <!-- Form group for the Day field -->
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="dayTextField">Day</label>
-                    <input type="text" class="form-control" id="dayTextField" placeholder="Enter the Day" name="Day" required>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="dayTextField" 
+                        placeholder="Enter the Day" 
+                        name="Day" 
+                        required>
                 </div>
                 <!-- Form group for the Weight field -->
-                <div class="form-group">
+                <div class="form-group mb-4">
                     <label for="weightTextField">Weight</label>
-                    <input type="text" class="form-control" id="weightTextField" placeholder="Enter the weight" name="Weight" required>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="weightTextField" 
+                        placeholder="Enter the Weight" 
+                        name="Weight" 
+                        required>
                 </div>
-                <!--Submit Button-->
-                <button class="btn btn-primary" type="submit">Submit
-                <i class="fas fa-edit"></i></button>  
-                <!--Cancel Button--> 
-                <button class="btn btn-warning" type="submit">Cancel
-                    <i class="fas fa-undo"></i></button>    
+                <!-- Submit Button (Red) -->
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-danger" type="submit">
+                        <i class="fas fa-save"></i> Add Exam
+                    </button>
+                    <!-- Cancel Button (Red) -->
+                    <a href="/index" class="btn btn-danger">
+                        <i class="fas fa-undo"></i> Cancel
+                    </a>
+                </div>
             </form>
         </div>
     </div>
 </div>
-<%- include ../Partials/footer.ejs%>
+<!-- Call footer -->
+<%- include ../Partials/footer.ejs %>
